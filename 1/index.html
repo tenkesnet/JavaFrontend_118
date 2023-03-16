@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Ez a html kód</h1>
+    <div id="doboz"></div>
+    <script>
+        const x = "kjljj";
+        const y = "------" + x + "------";
+        let a = 4
+        let b = 3
+        a = "Boci"
+        b = "tarka"
+        let c = true
+        let g = [12, 56, 22, "hkjhkjh", true]
+        let tomb = [
+            {
+                name: "Kiss Józsi",
+                price: 1200,
+                hairColor: "barna",
+            },
+            {
+                name: "Bárdonicsek Róbert",
+                hairColor: "barna",
+                price: 0,
+                status: ""
+            }
+        ]
+        var table = "<table width=100%><tr><th>Név<th>Ár<th>Hajszín</tr>"
+        function tablasorGeneralas(x) {
+            table += "<tr><td>" + x.name + "<td>" + x.price + "<td>" + x.hairColor + "</tr>"
+        }
+        const doboz = document.getElementById('doboz')
+
+        // for (let i = 0; i < tomb.length; i++) {
+        //     table += "<tr><td>" + tomb[i].name + "<td>" + tomb[i].price + "<td>" + tomb[i].hairColor + "</tr>"
+        // }
+        // tomb.forEach(x => {
+        //     table += "<tr><td>" + x.name + "<td>" + x.price + "<td>" + x.hairColor + "</tr>"
+        // })
+        // tomb.forEach(x => tablasorGeneralas(x))
+        // table += "</table>"
+        // doboz.innerHTML = table
+        //document.writeln(e[0]['hairColor'])
+        console.log(tomb.filter(x => x.hairColor === "barna"))
+        if (x == undefined) {
+            document.writeln(x)
+        }
+        console.log(true === "1")
+        //document.writeln("Hello World")
+        //document.getElementById('doboz').innerHTML = "<button>Gomb</button>"
+
+    </script>
+    <script src="app.js"></script>
+
+</body>
+
+
+</html>
