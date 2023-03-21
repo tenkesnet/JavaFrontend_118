@@ -2,8 +2,6 @@ let a = ["Alma", 'Körte', "Szilva"]
 let b = ["teve", 'kutya']
 let c = new Array("piros", "zold")
 
-
-
 console.log(`a = ${a.join(",")}`)
 console.log(`b = ${b}`)
 console.log(`c = ${c}`)
@@ -19,3 +17,4 @@ console.log(`Az a tömb utolsó értéke ${deletedItem}
 
 a.unshift(deletedItem)
 console.log(`Shift után a értéke: ${a}`)
+
