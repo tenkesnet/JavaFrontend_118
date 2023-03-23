@@ -35,3 +35,22 @@ function osszead(...szamok) {
     }
     return result
 }
+
+/**
+ * Megállapítja egy számról, hogy prím-e vagy nem
+ * @param {number} szam 
+ * @returns - boolean 
+ */
+function isPrime(szam) {
+    let prim = true;
+    //a vizsgálandó szám -1 -ig nézzük van -e osztója és ezt 3as szám utántól nézzük
+    if (szam > 3) {
+        for (let i = 2; i * i < szam; i++) {
+            if (szam % i === 0) {  // ezt a maradékosztással vizsgáljuk meg
+                prim = false
+                continue
+            }
+        }
+    }
+    return prim
+}

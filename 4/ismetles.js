@@ -19,6 +19,7 @@ for (let i = 3; i <= 1000; i++) {
     for (let j = 2; j < i - 1; j++) {
         if (i % j === 0) {
             prim = false
+            continue
         }
     }
     if (prim) {
