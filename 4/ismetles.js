@@ -25,5 +25,4 @@ for (let i = 3; i <= 1000; i++) {
     if (prim) {
         console.log(`A ${i} az primszám.`)
     }
-
 }
