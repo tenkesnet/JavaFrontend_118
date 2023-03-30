@@ -1,18 +1,11 @@
-let tomb = [1, 2, 3, 4]
-
-// let dolgozo1 = {
-//     nev: "Róbert",
-//     foglalkozas: "programozó",
-//     kor: 48,
-//     szulEv: 0,
-// }
-
-//dolgozo1.foglalkozas = "fejleszto"
 
 let Szemely = function (nev, foglalkozas, kor) {
     this.nev = nev
     this.foglalkozas = foglalkozas
     this.kor = kor
+    this.getBirthDate = function () {
+        this.szulEv = 2023 - this.kor
+    }
 }
 
 class Dolgozo {
@@ -22,6 +15,7 @@ class Dolgozo {
         this.nev = nev
         this.foglalkozas = foglalkozas
         this.kor = kor
+        this.getBirthDate()
     }
     getFoglalkozas() {
         return this.foglalkozas
@@ -31,19 +25,18 @@ class Dolgozo {
     }
 
     toString() {
-        return `[ ${this.nev}, ${this.foglalkozas}, ${this.kor} ]`
+        return `[ ${this.nev}, ${this.foglalkozas}, ${this.kor}, ${this.szulEv} ]`
     }
 }
 
 let attila = new Dolgozo()
 
 let dolgozo1 = new Dolgozo("Róbert", "fejleszto", 48)
+let dolgozoMasolat = dolgozo1
 //let dolgozo2 = new Dolgozo("Anna", "fejleszto", 21)
 //Dolgozo.prototype.szulEv = 0
 let dolgozo3 = new Dolgozo("Gábor", "eladó", 30)
-
-
-
+let dolgozo5 = new Szemely("Patrícia", "Sofőr", 33)
 
 let dolgozo2 = {
     nev: "Anna",
@@ -54,24 +47,12 @@ let dolgozo2 = {
         this.szulEv = 2023 - this.kor
     },
     toString: function () {
-        return `[ ${this.nev}, ${this.foglalkozas}, ${this.kor} ]`
+        this.getBirthDate()
+        return `[ ${this.nev}, ${this.foglalkozas}, ${this.kor}, ${this.szulEv} ]`
     }
 }
 
 let dolgozo4 = Object.create(dolgozo2)
-
-let b = 10
-let c = b
-b = 100
-console.log(`c: ${c}`)
-console.log(`b: ${b}`)
-
-let o1 = { tul1: 10 }
-let o2 = { tul1: 10 }
-o1.tul1 = 100
-console.log(`o2: ${o2.tul1}`)
-
-tomb.fill(0, 2, 4)
 
 /**
  * 
@@ -83,11 +64,7 @@ function valtoztat(x, y) {
     y = 100
 }
 
-//valtoztat(dolgozo1, b)
-dolgozo1.getBirthDate()
-//dolgozo3.getBirthDate()
-dolgozo4.getBirthDate()
+dolgozo5.getBirthDate()
 console.log(`Dolgozo1: ${dolgozo1}`)
 console.log(`Dolgozo3: ${dolgozo3}`)
 console.log(`Dolgozo4: ${dolgozo4}`)
-//console.log(dolgozo2)
