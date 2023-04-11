@@ -5,11 +5,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title>9. óra</title>
 </head>
 
 <body>
+    <div class="container" id="container">
+        <div class="row">
+
+            <div class="col-10 pt-3" id="main">
+                <h1>DOM manipuláció</h1>
+                <form class="myForm" method="post">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control input-lg mt-2" type="email" name="email" id="email"
+                            placeholder="email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control input-lg mt-2" type="password" name="password" id="password"
+                            placeholder="password" />
+                    </div>
+                    <div class="form-group pt-3">
+                        <label for="role">Jogosultság:</label>
+                        <select class="form-select mt-2" name="role" id="role">
+                            <option value="1">Admin</option>
+                            <option value="2">Editor</option>
+                            <option value="3">User</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group pt-5">
+                        <input type="submit" name="submit" class="btn btn-success btn-lg" id="submit" value="Belépés" />
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
     <script src="DOM_manipulacio.js"></script>
 </body>
 
