@@ -22,13 +22,13 @@ module.exports = {
         path: path.resolve(__dirname, 'public')
     },
     optimization: {
-        minimize: true,
+        minimize: false,
         minimizer: [new TerserPlugin({
             terserOptions: {
                 ecma: undefined,
                 parse: {},
                 compress: {
-                    drop_console: true
+                    drop_console: false
                 },
                 mangle: true,
             },
