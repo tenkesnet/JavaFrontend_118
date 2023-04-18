@@ -1,0 +1,2 @@
+(()=>{"use strict";new class extends class{constructor(s,t){this.name=s,this.birthDate=t}}{constructor(s,t){super(s,t)}}("Bárdonicse Róbert!!!!",new Date("1980-01-20"))})();
+//# sourceMappingURL=bundle.js.map
