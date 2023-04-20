@@ -3,7 +3,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     devtool: 'source-map',
-    entry: './src/index.ts',
+    entry: './src/app.ts',
     module: {
         rules: [
             {
@@ -18,7 +18,7 @@ module.exports = {
     },
     output: {
         publicPath: "public",
-        filename: "[name].bundle.js",
+        filename: "bundle.js",
         path: path.resolve(__dirname, 'public')
     },
     optimization: {
@@ -40,5 +40,5 @@ module.exports = {
         // },
 
     },
-    mode: "production",
+    mode: "development",
 }
