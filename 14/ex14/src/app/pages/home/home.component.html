@@ -1,2 +1,6 @@
-<p>Kezdőlap</p>
-<app-about></app-about>
+<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile><app-about></app-about></mat-grid-tile>
+    <mat-grid-tile>{{person | json}}</mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile><app-about></app-about></mat-grid-tile>
+</mat-grid-list>
