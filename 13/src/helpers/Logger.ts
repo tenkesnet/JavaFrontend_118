@@ -1,5 +1,8 @@
+
 export class Logger {
+
     private readonly logDiv: HTMLDivElement | null;
+
     constructor(selector: string) {
         this.logDiv = document.querySelector(`#${selector}`);
     }
@@ -8,7 +11,10 @@ export class Logger {
         const logrender = document.createElement("div")
         logrender.classList.add("info")
         logrender.textContent = this.createMessage(msg);
-        this.logDiv?.appendChild(logrender)
+        if (this.logDiv != null) {
+            this.logDiv.appendChild(logrender)
+        }
+
     }
 
     logError(msg: string): void {
@@ -28,5 +34,12 @@ export class Logger {
     private createMessage(msg: string): string {
         const now = new Date();
         return `[${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}]: ${msg}`;
+    }
+}
+
+export const Helper = {
+    logMasik: (msg: string) => {
+        console.log(msg);
+
     }
 }

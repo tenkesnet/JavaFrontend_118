@@ -40,6 +40,57 @@ Program.nextVersion = 1;
 
 /***/ }),
 
+/***/ "./src/componens/MyRanger.ts":
+/*!***********************************!*\
+  !*** ./src/componens/MyRanger.ts ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MyRanger": () => (/* binding */ MyRanger)
+/* harmony export */ });
+class MyRanger {
+    constructor(elementName) {
+        this.inputRange = document.querySelector(`#${elementName}`);
+        this.incrase = true;
+        if (this.inputRange != null) {
+            this.inputRange.min = "0";
+            this.inputRange.max = "100";
+            this.inputRange.value = "0";
+            //this.inputRange.disabled = true
+            this.inputRange.addEventListener("click", this.onClick);
+            this.inputRange.addEventListener("onchange", (e) => { e.preventDefault(); });
+            this.inputRange.addEventListener("oninput", (e) => { e.preventDefault(); });
+        }
+    }
+    onClick(evt) {
+        evt.preventDefault();
+        MyRanger.run = false;
+    }
+    start() {
+        if (MyRanger.run)
+            setTimeout(this.changeInputRangeValue, 1, this);
+    }
+    changeInputRangeValue(element) {
+        if (element.inputRange != null) {
+            element.inputRange.value = element.incrase ? (+element.inputRange.value + 5).toString() : (+element.inputRange.value - 5).toString();
+            if (+element.inputRange.value === 100) {
+                element.incrase = false;
+            }
+            if (+element.inputRange.value === 0) {
+                element.incrase = true;
+            }
+        }
+        element.start();
+    }
+}
+MyRanger.run = true;
+
+
+
+/***/ }),
+
 /***/ "./src/helpers/Logger.ts":
 /*!*******************************!*\
   !*** ./src/helpers/Logger.ts ***!
@@ -48,6 +99,7 @@ Program.nextVersion = 1;
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Helper": () => (/* binding */ Helper),
 /* harmony export */   "Logger": () => (/* binding */ Logger)
 /* harmony export */ });
 class Logger {
@@ -55,11 +107,12 @@ class Logger {
         this.logDiv = document.querySelector(`#${selector}`);
     }
     logInfo(msg) {
-        var _a;
         const logrender = document.createElement("div");
         logrender.classList.add("info");
         logrender.textContent = this.createMessage(msg);
-        (_a = this.logDiv) === null || _a === void 0 ? void 0 : _a.appendChild(logrender);
+        if (this.logDiv != null) {
+            this.logDiv.appendChild(logrender);
+        }
     }
     logError(msg) {
         var _a;
@@ -80,6 +133,11 @@ class Logger {
         return `[${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}]: ${msg}`;
     }
 }
+const Helper = {
+    logMasik: (msg) => {
+        console.log(msg);
+    }
+};
 
 
 /***/ })
@@ -147,21 +205,26 @@ var __webpack_exports__ = {};
   !*** ./src/app.ts ***!
   \********************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Program__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Program */ "./src/Program.ts");
-/* harmony import */ var _helpers_Logger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers/Logger */ "./src/helpers/Logger.ts");
+/* harmony import */ var _componens_MyRanger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./componens/MyRanger */ "./src/componens/MyRanger.ts");
+/* harmony import */ var _Program__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Program */ "./src/Program.ts");
+/* harmony import */ var _helpers_Logger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers/Logger */ "./src/helpers/Logger.ts");
+
 
 
 console.log("Hello 12. óra");
-let mainProgram = new _Program__WEBPACK_IMPORTED_MODULE_0__.Program("RobotWarrior", new _helpers_Logger__WEBPACK_IMPORTED_MODULE_1__.Logger("left"));
-let mainProgram2 = new _Program__WEBPACK_IMPORTED_MODULE_0__.Program("MásodikWarrior", new _helpers_Logger__WEBPACK_IMPORTED_MODULE_1__.Logger("body"));
-let mellekProgram = new _Program__WEBPACK_IMPORTED_MODULE_0__.Program("MásodikWarrior", new _helpers_Logger__WEBPACK_IMPORTED_MODULE_1__.Logger("log"));
-let logInfo = new _helpers_Logger__WEBPACK_IMPORTED_MODULE_1__.Logger("log");
+let mainProgram = new _Program__WEBPACK_IMPORTED_MODULE_1__.Program("RobotWarrior", new _helpers_Logger__WEBPACK_IMPORTED_MODULE_2__.Logger("left"));
+let mainProgram2 = new _Program__WEBPACK_IMPORTED_MODULE_1__.Program("MásodikWarrior", new _helpers_Logger__WEBPACK_IMPORTED_MODULE_2__.Logger("body"));
+let mellekProgram = new _Program__WEBPACK_IMPORTED_MODULE_1__.Program("MásodikWarrior", new _helpers_Logger__WEBPACK_IMPORTED_MODULE_2__.Logger("log"));
+let logInfo = new _helpers_Logger__WEBPACK_IMPORTED_MODULE_2__.Logger("log");
 mainProgram.setLogger(logInfo);
 mainProgram2.setLogger(logInfo);
 mellekProgram.setLogger(logInfo);
+let ranger = new _componens_MyRanger__WEBPACK_IMPORTED_MODULE_0__.MyRanger("warrior1");
+ranger.start();
 mainProgram.log("mainProgram");
 mainProgram2.log("másodikProgram");
 mellekProgram.log("mellékProgram");
+_helpers_Logger__WEBPACK_IMPORTED_MODULE_2__.Helper.logMasik("jkléjlkj");
 
 })();
 

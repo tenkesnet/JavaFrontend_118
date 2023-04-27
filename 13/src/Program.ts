@@ -1,12 +1,13 @@
-import { Logger } from "./helpers/Logger";
+import { Logger as MyLogger } from "./helpers/Logger";
+
 
 export class Program {
     private programName: string = "RobotWarrior";
     private static nextVersion: number = 1
-    private logger: Logger;
+    private logger: MyLogger;
     private currentVerzio: number;
 
-    constructor(nev: string, logger: Logger) {
+    constructor(nev: string, logger: MyLogger) {
         this.logger = logger;
         this.programName = nev;
         this.currentVerzio = Program.nextVersion;
@@ -26,7 +27,7 @@ export class Program {
         this.logger.logInfo(msg)
     }
 
-    setLogger(logger: Logger): void {
+    setLogger(logger: MyLogger): void {
         this.logger = logger
     }
 }
