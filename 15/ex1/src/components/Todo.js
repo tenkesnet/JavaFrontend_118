@@ -1,17 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Modal from './Modal'
 
 
 function Todo(props) {
-    let pelda = "kljlkjjlk"
+    const [showModal, setShowModal] = useState(false)
+
     console.log("Az Todo megjelent!")
+
+    const clickHandler = () => { setShowModal(false) }
+
     return (
         <div className="card">
             <h2>{props.text}</h2>
             <div className='action'>
-                <button className="btn" onClick={() => { console.log("Click!") }}>
+                <button className="btn" onClick={() => { setShowModal(true) }}>
                     Delete
                 </button>
             </div>
+            {showModal && <Modal text="Biztosan bezárod?" onClose={clickHandler} />}
+
         </div>
     )
 }
