@@ -1,9 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 
+import Todo from './components/Todo';
+
 function App() {
+
   return (
-    <h2>Hello World!</h2>
+    <Todo text="Todo Alkalmazás:" />
   );
 }
 
