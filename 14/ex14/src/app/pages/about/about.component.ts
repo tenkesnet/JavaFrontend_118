@@ -10,10 +10,16 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
   ]
 })
+
 export class AboutComponent {
-  longText = "Ez egy hosszú szöveg"
+  longText: string
+  a: number
   maiDatum = new Date()
-  display(): String {
-    return "ezt a szöveget írd ki"
+  constructor() {
+    this.a = 4
+    this.longText = ""
+    if (this.a > 3) {
+      this.longText = "Az a értéke nagyobb mint 3."
+    }
   }
 }
