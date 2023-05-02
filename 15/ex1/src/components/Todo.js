@@ -7,7 +7,11 @@ function Todo(props) {
     return (
         <div className="card">
             <h2>{props.text}</h2>
-            <h3>{pelda}</h3>
+            <div className='action'>
+                <button className="btn" onClick={() => { console.log("Click!") }}>
+                    Delete
+                </button>
+            </div>
         </div>
     )
 }
