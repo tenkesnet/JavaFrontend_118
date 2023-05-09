@@ -1,10 +1,12 @@
 import ExpenseItem from "./ExpenseItem"
 import Card from "../UI/Card"
 import "./Expenses.css"
+import ExpensesFilter from "./ExpensesFilter"
 const Expenses = ({ expenses }) => {
 
     return (
         <Card className="expenses">
+            <ExpensesFilter />
             {
                 expenses.map(expense =>
                     <ExpenseItem
@@ -14,17 +16,6 @@ const Expenses = ({ expenses }) => {
                         date={expense.date}
                     ></ExpenseItem>
                 )
-                // expenses.map(function (expense) {
-                //     let id = Math.random().toString()
-                //     return (
-                //         <ExpenseItem
-                //             key={id}
-                //             title={expense.title}
-                //             amount={expense.amount}
-                //             date={expense.date}
-                //         ></ExpenseItem>
-                //     )
-                // })
             }
         </Card>
     )
