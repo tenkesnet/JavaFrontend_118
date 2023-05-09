@@ -3,7 +3,6 @@ import Card from '../UI/Card';
 import ExpenseDate from './ExpenseDate';
 
 function ExpenseItem({ date, amount, title }) {
-    console.log("expenseitem")
     return (
         <Card className='expense-item'>
             <ExpenseDate date={date} />
