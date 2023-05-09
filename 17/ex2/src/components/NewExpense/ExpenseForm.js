@@ -4,7 +4,7 @@ import './ExpenseForm.css';
 
 const ExpenseForm = ({ onSaveExpenseData }) => {
     const [enteredTitle, setEnteredTitle] = useState('');
-    const [enteredAmount, setEnteredAmount] = useState('');
+    const [enteredAmount, setEnteredAmount] = useState(0);
     const [enteredDate, setEnteredDate] = useState('');
     // const [userInput, setUserInput] = useState({
     //     enteredTitle: '',
@@ -26,7 +26,7 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
     };
 
     const amountChangeHandler = (event) => {
-        setEnteredAmount(event.target.value);
+        setEnteredAmount(parseInt(event.target.value));
         // setUserInput({
         //     ...userInput,
         //     enteredAmount: event.target.value,
