@@ -1,14 +1,16 @@
-import React, { ReactNode } from 'react';
+import Todo from '../models/Todo';
+import TodoItem from './TodoItem';
 
-type todoPropsTyle = { items: string[], children: ReactNode }
+import classes from './Todo.module.css'
+
+type todoPropsTyle = { items: Todo[]}
 
 const Todos = (props:todoPropsTyle) => {
   return (
     <>
-      <h2>{ props.children }</h2>  
-      <ul>
+      <ul className={classes.todos}>  
         {props.items.map((item) => (
-          <li key={item}>{item}</li>
+          <TodoItem key={item.id} text={ item.text } />
         ))}
       </ul>
     </>
