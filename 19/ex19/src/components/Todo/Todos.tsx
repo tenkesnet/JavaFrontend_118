@@ -1,18 +1,19 @@
-import Todo from '../../models/Todo';
 import TodoItem from './TodoItem';
+import Todo from '../../models/Todo';
+import classes from './Todos.module.css';
 
-import classes from './Todo.module.css'
-
-const Todos = (props : { items: Todo[]}) => {
+const Todos = (props: {items: Todo[]; onRemoveTodo: (id: string) => void }) => {
+  
   return (
-    <>
-      
-      <ul className={classes.todos}>  
-        {props.items.map((item) => (
-          <TodoItem key={item.id} text={item.text}/>
-        ))}
-      </ul>
-    </>
+    <ul className={classes.todos}>
+      {props.items.map((item) => (
+        <TodoItem
+          key={item.id}
+          text={item.text}
+          onClickTodo={props.onRemoveTodo.bind(null, item.id)}
+        />
+      ))}
+    </ul>
   );
 };
 
