@@ -21,7 +21,7 @@ const NewTodo = (props: {onAddTodo: (text: string) => void }) => {
     <form onSubmit={submitHandler} className={classes.form}>
       <label htmlFor='text'>Todo text</label>
       <input type='text' id='text' ref={todoTextInputRef} />
-      <button>Add Todo</button>
+      <button type='submit'>Add Todo</button>
     </form>
   );
 };

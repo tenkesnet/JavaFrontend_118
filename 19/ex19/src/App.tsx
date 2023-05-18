@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import Todos from './components/Todos';
+import Todos from './components/Todo/Todos';
 import Todo from './models/Todo';
-import NewTodo from './components/NewTodo';
+import NewTodo from './components/Todo/NewTodo';
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -12,6 +12,7 @@ function App() {
 
     setTodos((prevTodos) => {
       return prevTodos.concat(newTodo);
+      //return [newTodo,...prevTodos]
     });
   };
   
