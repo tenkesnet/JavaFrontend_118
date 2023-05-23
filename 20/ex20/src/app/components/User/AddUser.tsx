@@ -2,7 +2,7 @@ import React, { useState, FormEvent, ChangeEvent, useRef } from 'react';
 
 import Card from '../UI/Card';
 import Button from '../UI/Button';
-import classes from './AddUser.module.css';
+import './AddUser.css';
 
 const AddUser = () => {
   const userNameRef = useRef<HTMLInputElement>(null);
@@ -14,13 +14,16 @@ const AddUser = () => {
   };
 
   return (
-    <Card className={classes.input}>
+    <Card className="input">
       <form onSubmit={addUserHandler}>
         <label htmlFor="username">Username</label>
         <input id="username" type="text" ref={userNameRef} />
         <label htmlFor="age">Age (Years)</label>
         <input id="age" type="number" ref={ageRef} />
         <Button type="submit">Add User</Button>
+        <button type="button" className="button">
+          Példa
+        </button>
       </form>
     </Card>
   );

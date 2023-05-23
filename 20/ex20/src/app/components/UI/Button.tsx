@@ -1,17 +1,17 @@
 import React, { ReactNode } from 'react';
 
-import classes from './Button.module.css';
+import './Button.css';
 
 interface Props {
-    children: ReactNode,
-    type: "button" | "submit"| "reset" | undefined,
-    onClick?: (evt:React.MouseEvent<HTMLButtonElement> ) =>void
+  children: ReactNode;
+  type: 'button' | 'submit' | 'reset' | undefined;
+  onClick?: (evt: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button = (props:Props) => {
+const Button = (props: Props) => {
   return (
     <button
-      className={classes.button}
+      className="button"
       type={props.type || 'button'}
       onClick={props.onClick}
     >
