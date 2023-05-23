@@ -10,7 +10,8 @@ const Todos = (props: {items: Todo[]; onRemoveTodo: (id: string) => void }) => {
         <TodoItem
           key={item.id}
           text={item.text}
-          onClickTodo={props.onRemoveTodo.bind(null, item.id)}
+          //onClickTodo={props.onRemoveTodo.bind(null, item.id)}
+          onClickTodo={function () { props.onRemoveTodo(item.id); }}
         />
       ))}
     </ul>
