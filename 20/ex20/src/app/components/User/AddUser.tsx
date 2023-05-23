@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, FormEvent, ChangeEvent } from 'react';
 
 import Card from '../UI/Card';
 import Button from '../UI/Button';
 import classes from './AddUser.module.css';
 
-const AddUser = (props) => {
+
+const AddUser = () => {
   const [enteredUsername, setEnteredUsername] = useState('');
   const [enteredAge, setEnteredAge] = useState('');
 
-  const addUserHandler = (event) => {
+  const addUserHandler = (event:FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(enteredUsername, enteredAge);
   };
 
-  const usernameChangeHandler = (event) => {
+  const usernameChangeHandler = (event:ChangeEvent<HTMLInputElement>) => {
     setEnteredUsername(event.target.value);
   };
 
-  const ageChangeHandler = (event) => {
+  const ageChangeHandler = (event:ChangeEvent<HTMLInputElement>) => {
     setEnteredAge(event.target.value);
   };
 

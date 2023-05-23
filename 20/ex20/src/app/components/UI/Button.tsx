@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import classes from './Button.module.css';
 
-const Button = (props) => {
+interface Props {
+    children: ReactNode,
+    type: "button" | "submit"| "reset" | undefined,
+    onClick?: (evt:React.MouseEvent<HTMLButtonElement> ) =>void
+}
+
+const Button = (props:Props) => {
   return (
     <button
       className={classes.button}
