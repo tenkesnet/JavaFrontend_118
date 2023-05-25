@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
+import svgr from 'vite-plugin-svgr'
 
 export default defineConfig({
   cacheDir: './node_modules/.vite/ruhabolt',
@@ -21,7 +22,14 @@ export default defineConfig({
     viteTsConfigPaths({
       root: './',
     }),
+    svgr({
+      svgrOptions: {
+        // svgr options
+      },
+    }),
   ],
+
+
 
   // Uncomment this if you are using workers.
   // worker: {
