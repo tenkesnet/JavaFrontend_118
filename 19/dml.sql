@@ -9,8 +9,8 @@ INSERT INTO regions(region_id,region_name) VALUES (4,'Middle East and Africa');
 INSERT INTO regions(region_name) VALUES ('Africa');
 
 select * from regions;
-update regions set region_name='India';
-delete from regions where region_id=7;
+update regions set region_name='India' where region_name='Africa';
+--delete from regions where region_id=7;
 
 /*Data for the table countries */
 INSERT INTO countries(country_id,country_name,region_id) VALUES ('AR','Argentina',2);
@@ -130,6 +130,10 @@ INSERT INTO employees(employee_id,first_name,last_name,email,phone_number,hire_d
 INSERT INTO employees(employee_id,first_name,last_name,email,phone_number,hire_date,job_id,salary,manager_id,department_id) VALUES (204,'Hermann','Baer','hermann.baer@sqltutorial.org','515.123.8888','1994-06-07',12,10000.00,101,7);
 INSERT INTO employees(employee_id,first_name,last_name,email,phone_number,hire_date,job_id,salary,manager_id,department_id) VALUES (205,'Shelley','Higgins','shelley.higgins@sqltutorial.org','515.123.8080','1994-06-07',2,12000.00,101,11);
 INSERT INTO employees(employee_id,first_name,last_name,email,phone_number,hire_date,job_id,salary,manager_id,department_id) VALUES (206,'William','Gietz','william.gietz@sqltutorial.org','515.123.8181','1994-06-07',1,8300.00,205,11);
+INSERT INTO employees(
+    employee_id,first_name,last_name,email,
+    phone_number,hire_date,job_id,salary,manager_id,department_id) 
+    VALUES (207,'Ádám','Gietz','william.gietz@sqltutorial.org','515.123.8181','1994-06-07',1,8300.00,205,11);
 
 
 /*Data for the table dependents */

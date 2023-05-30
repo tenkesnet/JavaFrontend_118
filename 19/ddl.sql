@@ -29,6 +29,7 @@ CREATE TABLE departments (
 	FOREIGN KEY (location_id) REFERENCES locations (location_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+
 CREATE TABLE jobs (
 	job_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 	job_title text NOT NULL,
