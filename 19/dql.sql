@@ -50,11 +50,14 @@ ORDER BY
 	first_name;
 
 SELECT
-	employee_id,
-	first_name,
-	last_name
+
+    count(e.employee_id),
+    e2.first_name,
+    e2.last_name
 FROM
-	employees
+	employees e join employees e2 on e.manager_id=e2.employee_id
+GROUP BY
+    e2.last_name
 WHERE
 	last_name = 'Chen';
 

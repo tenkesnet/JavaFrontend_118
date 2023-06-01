@@ -14,7 +14,12 @@ const Navigation = () => {
         </Link>
         <div className="nav-links-container">
           <Link className="nav-link" to="/about">
-            ABOUT
+            Rólunk
+          </Link>
+        </div>
+        <div className="nav-links-container">
+          <Link className="nav-link" to="/signIn">
+            Bejelentkezés
           </Link>
         </div>
       </div>
