@@ -12,10 +12,7 @@ const Navigation = () => {
   const { currentUser, setCurrentUser } = useContext(
     UserContext
   ) as UserContextType;
-  const signOutHandler = async () => {
-    await signOutUser();
-    setCurrentUser(null);
-  };
+
   return (
     <>
       <div className="navigation">
@@ -28,7 +25,7 @@ const Navigation = () => {
           </Link>
 
           {currentUser ? (
-            <span className="nav-link" onClick={signOutHandler}>
+            <span className="nav-link" onClick={signOutUser}>
               {' '}
               KIJELENTKEZÉS{' '}
             </span>

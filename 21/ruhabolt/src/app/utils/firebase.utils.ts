@@ -10,11 +10,14 @@ import {
     UserCredential,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    signOut
+    signOut,
+    onAuthStateChanged,
+    NextOrObserver,
+    User
 } from 'firebase/auth'
 
 import { getFirestore, doc, getDoc, setDoc, FirestoreError } from 'firebase/firestore';
-import { User } from '../model/User';
+import { WebshopUser } from '../model/WebshopUser';
 
 const firebaseApp: FirebaseApp = initializeApp(firebaseConfig)
 
@@ -32,11 +35,11 @@ export const signInWithGooglePopup = (): Promise<UserCredential> => signInWithPo
 export const db = getFirestore();
 
 export const createUserDocumentFromAuth = async (
-    user: User
+    user: WebshopUser
 ) => {
     if (!user.userAuth) return;
 
-    const userDocRef = doc(db, 'users', user.userAuth.user.uid);
+    const userDocRef = doc(db, 'users', user.userAuth.uid);
 
     const userSnapshot = await getDoc(userDocRef);
 
@@ -49,7 +52,6 @@ export const createUserDocumentFromAuth = async (
                 displayName,
                 email,
                 createdAt,
-                'gender': 'férfi'
             });
         } catch (e) {
             const error = e as FirestoreError
@@ -63,13 +65,15 @@ export const createUserDocumentFromAuth = async (
 export const createAuthUserWithEmailAndPassword = async (email: string, password: string) => {
     if (!email || !password) return;
 
-    return await createUserWithEmailAndPassword(auth, email, password);
+    return (await createUserWithEmailAndPassword(auth, email, password)).user;
 };
 
 export const signInAuthUserWithEmailAndPassword = async (email: string, password: string) => {
     if (!email || !password) return;
 
-    return await signInWithEmailAndPassword(auth, email, password);
+    return (await signInWithEmailAndPassword(auth, email, password)).user;
 };
 
 export const signOutUser = async () => await signOut(auth);
+export const onAuthStateChangedListener = (callback: NextOrObserver<User>) =>
+    onAuthStateChanged(auth, callback);

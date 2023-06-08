@@ -9,7 +9,8 @@ import {
 } from '../../utils/firebase.utils';
 
 import './sign-up-form.styles.scss';
-import { User } from 'src/app/model/User';
+import { User } from 'firebase/auth';
+import { WebshopUser } from 'src/app/model/WebshopUser';
 
 const defaultFormFields = {
   displayName: '',
@@ -39,7 +40,7 @@ const SignUpForm = () => {
         email,
         password
       );
-      const user = new User(userCredential, displayName, email);
+      const user = new WebshopUser(userCredential, displayName, email);
       await createUserDocumentFromAuth(user);
       resetFormFields();
     } catch (error: any) {
