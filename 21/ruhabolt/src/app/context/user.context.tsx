@@ -1,10 +1,10 @@
-import { SetStateAction, createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 import { User } from '../model/User';
 import React from 'react';
 
 export type UserContextType = {
   currentUser: User | null;
-  setCurrentUser: (user: User) => void;
+  setCurrentUser: (user: User | null) => void;
 };
 interface Props {
   children: React.ReactNode;
