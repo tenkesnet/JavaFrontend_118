@@ -1,4 +1,4 @@
-import Category from 'src/app/module/Category';
+import Category from 'src/app/model/Category';
 import './category-item.styles.scss';
 
 type Props = {

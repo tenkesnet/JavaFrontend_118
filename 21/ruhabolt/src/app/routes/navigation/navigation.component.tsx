@@ -4,8 +4,14 @@ import { ReactComponent as CrwnLogo } from '../../../assets/crown.svg';
 
 import './navigation.styles.scss';
 import App from 'src/app/app';
+import { useContext } from 'react';
+import { UserContext, UserContextType } from 'src/app/context/user.context';
 
 const Navigation = () => {
+  const { currentUser, setCurrentUser } = useContext(
+    UserContext
+  ) as UserContextType;
+  console.log(currentUser);
   return (
     <>
       <div className="navigation">

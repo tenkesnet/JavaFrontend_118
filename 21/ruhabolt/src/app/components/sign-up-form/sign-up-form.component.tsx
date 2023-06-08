@@ -6,10 +6,10 @@ import Button from '../button/button.component';
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
-  User,
 } from '../../utils/firebase.utils';
 
 import './sign-up-form.styles.scss';
+import { User } from 'src/app/model/User';
 
 const defaultFormFields = {
   displayName: '',
@@ -35,14 +35,11 @@ const SignUpForm = () => {
     }
 
     try {
-      const userCreditential = await createAuthUserWithEmailAndPassword(
+      const userCredential = await createAuthUserWithEmailAndPassword(
         email,
         password
       );
-      const user = new User();
-      user.userAuth = userCreditential;
-      user.displayName = displayName;
-      user.email = email;
+      const user = new User(userCredential, displayName, email);
       await createUserDocumentFromAuth(user);
       resetFormFields();
     } catch (error: any) {

@@ -13,16 +13,13 @@ import {
 } from 'firebase/auth'
 
 import { getFirestore, doc, getDoc, setDoc, FirestoreError } from 'firebase/firestore';
+import { User } from '../model/User';
 
 const firebaseApp: FirebaseApp = initializeApp(firebaseConfig)
 
 const provider: GoogleAuthProvider = new GoogleAuthProvider()
 
-export class User {
-    userAuth?: UserCredential;
-    displayName?: string;
-    email?: string;
-}
+
 
 provider.setCustomParameters({
     prompt: 'select_account'
@@ -50,7 +47,8 @@ export const createUserDocumentFromAuth = async (
             await setDoc(userDocRef, {
                 displayName,
                 email,
-                createdAt
+                createdAt,
+                'gender': 'férfi'
             });
         } catch (e) {
             const error = e as FirestoreError
