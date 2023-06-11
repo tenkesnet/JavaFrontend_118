@@ -1,8 +1,11 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import Product from '../model/Product';
-import { CartItem } from '../model/CartItem';
+import { CartItemEntity } from '../model/CartItemEntity';
 
-export const addCartItem = (cartItems: CartItem[], productToAdd: Product) => {
+export const addCartItem = (
+  cartItems: CartItemEntity[],
+  productToAdd: Product
+) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
   );
@@ -21,8 +24,9 @@ export const addCartItem = (cartItems: CartItem[], productToAdd: Product) => {
 export type CartContextType = {
   isCartOpen: boolean;
   setIsCartOpen: (isCartOpen: boolean) => void;
-  cartItems: CartItem[];
+  cartItems: CartItemEntity[];
   addItemToCart: (item: Product) => void;
+  cartItemCount: number;
 };
 interface Props {
   children: React.ReactNode;
@@ -31,11 +35,27 @@ export const CartContext = createContext<Partial<CartContextType>>({});
 
 export const CartProvider = ({ children }: Props) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState<CartItemEntity[]>(
+    new Array<CartItemEntity>()
+  );
+  const [cartItemCount, setCartItemCount] = useState(0);
 
-  const [cartItems, setCartItems] = useState<CartItem[]>(new Array<CartItem>());
+  useEffect(() => {
+    const count = cartItems.reduce(
+      (total, cartItem) => total + cartItem.quantity,
+      0
+    );
+    setCartItemCount(count);
+  }, [cartItems]);
 
   const addItemToCart = (product: Product) =>
     setCartItems(addCartItem(cartItems, product));
-  const value = { isCartOpen, setIsCartOpen, cartItems, addItemToCart };
+  const value = {
+    isCartOpen,
+    setIsCartOpen,
+    cartItems,
+    addItemToCart,
+    cartItemCount,
+  };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

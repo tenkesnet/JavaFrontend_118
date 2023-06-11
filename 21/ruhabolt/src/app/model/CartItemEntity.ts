@@ -1,5 +1,5 @@
 import Product from "./Product";
 
-export class CartItem extends Product {
+export class CartItemEntity extends Product {
     quantity = 0;
 }
