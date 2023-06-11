@@ -1,13 +1,8 @@
-class Category {
-    id: number
-    imageUrl: string
-    title: string
+import Product from "./Product"
 
-    constructor(id: number, imageUrl: string, title: string) {
-        this.imageUrl = imageUrl
-        this.title = title
-        this.id = id
-    }
+class Category {
+    title = ''
+    items = new Array<Product>()
 }
 
 export default Category
