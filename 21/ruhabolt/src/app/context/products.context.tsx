@@ -10,7 +10,7 @@ export type ProductContextType = {
   products: Product[];
 };
 
-export const ProductsContext = createContext<ProductContextType | null>(null);
+export const ProductsContext = createContext<Partial<ProductContextType>>({});
 
 export const ProductsProvider = ({ children }: Props) => {
   const [products, setProducts] = useState(PRODUCTS);

@@ -7,30 +7,27 @@ import {
 } from '../utils/firebase.utils';
 
 export type UserContextType = {
-  currentUser: WebshopUser | null;
-  setCurrentUser: (user: WebshopUser | null) => void;
+  currentUser: WebshopUser;
+  setCurrentUser: (user: WebshopUser) => void;
 };
 interface Props {
   children: React.ReactNode;
 }
-export const UserContext = createContext<UserContextType | null>(null);
+
+export const UserContext = createContext<Partial<UserContextType>>({});
 
 export const UserProvider = ({ children }: Props) => {
-  const [currentUser, setCurrentUser] = useState<WebshopUser | null>(null);
+  const [currentUser, setCurrentUser] = useState<WebshopUser>();
   const value = { currentUser, setCurrentUser };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((userAuth) => {
-      if (userAuth) {
-        const user = new WebshopUser(
-          userAuth,
-          userAuth.displayName,
-          userAuth.email
-        );
-        createUserDocumentFromAuth(user);
-        setCurrentUser(user);
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      if (user) {
+        const webshopUser = new WebshopUser(user, user.displayName, user.email);
+        createUserDocumentFromAuth(webshopUser);
+        setCurrentUser(webshopUser);
       } else {
-        setCurrentUser(null);
+        setCurrentUser({});
       }
     });
 

@@ -19,7 +19,7 @@ export const addCartItem = (cartItems: CartItem[], productToAdd: Product) => {
 };
 
 export type CartContextType = {
-  isCartOpen: boolean | null;
+  isCartOpen: boolean;
   setIsCartOpen: (isCartOpen: boolean) => void;
   cartItems: CartItem[];
   addItemToCart: (item: Product) => void;
@@ -27,7 +27,7 @@ export type CartContextType = {
 interface Props {
   children: React.ReactNode;
 }
-export const CartContext = createContext<CartContextType | null>(null);
+export const CartContext = createContext<Partial<CartContextType>>({});
 
 export const CartProvider = ({ children }: Props) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
