@@ -11,15 +11,17 @@ import {
 interface Props {
   children: React.ReactNode;
 }
-export type ProductContextType = {
-  products: Category[];
+export type CategoryContextType = {
+  categories: Category[];
 };
 
-export const ProductsContext = createContext<Partial<ProductContextType>>({});
+export const CategoriesContext = createContext<Partial<CategoryContextType>>(
+  {}
+);
 
-export const ProductsProvider = ({ children }: Props) => {
+export const CategoriesProvider = ({ children }: Props) => {
   //const [products, setProducts] = useState(SHOP_DATA as Category[]);
-  const [products, setProducts] = useState<Category[]>([] as Category[]);
+  const [categories, setCategories] = useState<Category[]>([] as Category[]);
   // useEffect(() => {
   //   addCollectionAndDocuments('categories', SHOP_DATA);
   // }, []);
@@ -27,15 +29,15 @@ export const ProductsProvider = ({ children }: Props) => {
   useEffect(() => {
     const fetchProducts = async () => {
       const categoryMap = await getCategoriesAndDocuments();
-      setProducts(categoryMap);
+      setCategories(categoryMap);
     };
     fetchProducts();
   }, []);
 
-  const value = { products };
+  const value = { categories };
   return (
-    <ProductsContext.Provider value={value}>
+    <CategoriesContext.Provider value={value}>
       {children}
-    </ProductsContext.Provider>
+    </CategoriesContext.Provider>
   );
 };

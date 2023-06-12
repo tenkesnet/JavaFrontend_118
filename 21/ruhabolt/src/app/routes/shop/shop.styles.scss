@@ -1,14 +1,4 @@
-.products-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 10px;
-  row-gap: 50px;
-  flex-wrap: wrap;
-  flex-basis: calc(960px * 999 - 100% * 999);
-}
-
-.products-container >* {
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 280px;
+.shop-container {
+  display: flex;
+  flex-direction: column;
 }
