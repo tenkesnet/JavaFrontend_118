@@ -4,14 +4,14 @@ import { ReactComponent as CrwnLogo } from '../../../assets/crown.svg';
 
 import './navigation.styles.scss';
 import { useContext } from 'react';
-import { UserContext } from 'src/app/context/user.context';
+import { UserContext, UserContextType } from 'src/app/context/user.context';
 import { signOutUser } from 'src/app/utils/firebase.utils';
 import CartIcon from 'src/app/components/cart-icon/cart-icon.component';
 import CartDropdown from 'src/app/components/cart-dropdown/cart-dropdown.component';
 import { CartContext } from 'src/app/context/cart.context';
 
 const Navigation = () => {
-  const { currentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext) as UserContextType;
   const { isCartOpen } = useContext(CartContext);
 
   return (
