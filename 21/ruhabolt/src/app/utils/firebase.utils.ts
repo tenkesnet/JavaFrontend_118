@@ -16,7 +16,7 @@ import {
     User
 } from 'firebase/auth'
 
-import { getFirestore, doc, getDoc, setDoc, FirestoreError, writeBatch, collection } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, FirestoreError, writeBatch, collection, query, getDocs } from 'firebase/firestore';
 import { WebshopUser } from '../model/WebshopUser';
 import Category from '../model/Category';
 
@@ -49,6 +49,17 @@ export const addCollectionAndDocuments = async (
 
     await batch.commit();
     console.log('done');
+};
+
+export const getCategoriesAndDocuments = async () => {
+    const collectionRef = collection(db, 'categories');
+    const q = query(collectionRef);
+
+    const querySnapshot = await getDocs(q);
+    const categoryMap = querySnapshot.docs.map(x => x.data() as Category);
+
+
+    return categoryMap;
 };
 
 export const createUserDocumentFromAuth = async (

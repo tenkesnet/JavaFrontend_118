@@ -7,17 +7,17 @@ import {
 } from '../utils/firebase.utils';
 
 export type UserContextType = {
-  currentUser: WebshopUser;
+  currentUser: WebshopUser | null;
   setCurrentUser: (user: WebshopUser) => void;
 };
 interface Props {
   children: React.ReactNode;
 }
 
-export const UserContext = createContext<Partial<UserContextType>>({});
+export const UserContext = createContext<UserContextType | null>(null);
 
 export const UserProvider = ({ children }: Props) => {
-  const [currentUser, setCurrentUser] = useState<WebshopUser>();
+  const [currentUser, setCurrentUser] = useState<WebshopUser | null>(null);
   const value = { currentUser, setCurrentUser };
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export const UserProvider = ({ children }: Props) => {
         createUserDocumentFromAuth(webshopUser);
         setCurrentUser(webshopUser);
       } else {
-        setCurrentUser({});
+        setCurrentUser(null);
       }
     });
 
