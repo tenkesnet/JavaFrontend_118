@@ -2,17 +2,17 @@ import { createContext, useEffect, useState } from 'react';
 
 import SHOP_DATA from '../shop-data';
 import Product from '../model/Product';
-import Category from '../model/Category';
 import {
   addCollectionAndDocuments,
   getCategoriesAndDocuments,
 } from '../utils/firebase.utils';
+import CategoryEntity from '../model/CategoryEntity';
 
 interface Props {
   children: React.ReactNode;
 }
 export type CategoryContextType = {
-  categories: Category[];
+  categories: CategoryEntity[];
 };
 
 export const CategoriesContext = createContext<Partial<CategoryContextType>>(
@@ -21,7 +21,9 @@ export const CategoriesContext = createContext<Partial<CategoryContextType>>(
 
 export const CategoriesProvider = ({ children }: Props) => {
   //const [products, setProducts] = useState(SHOP_DATA as Category[]);
-  const [categories, setCategories] = useState<Category[]>([] as Category[]);
+  const [categories, setCategories] = useState<CategoryEntity[]>(
+    [] as CategoryEntity[]
+  );
   // useEffect(() => {
   //   addCollectionAndDocuments('categories', SHOP_DATA);
   // }, []);

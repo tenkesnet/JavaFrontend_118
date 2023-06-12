@@ -18,7 +18,7 @@ import {
 
 import { getFirestore, doc, getDoc, setDoc, FirestoreError, writeBatch, collection, query, getDocs } from 'firebase/firestore';
 import { WebshopUser } from '../model/WebshopUser';
-import Category from '../model/Category';
+import Category from '../model/CategoryEntity';
 
 const firebaseApp: FirebaseApp = initializeApp(firebaseConfig)
 

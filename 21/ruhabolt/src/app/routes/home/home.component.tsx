@@ -1,5 +1,10 @@
 import Directory from '../../components/directory/directory.component';
 
+export type CategoryType = {
+  id: number;
+  title: string;
+  imageUrl: string;
+};
 const Home = () => {
   const categories = [
     {
@@ -27,7 +32,7 @@ const Home = () => {
       title: 'mens',
       imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
     },
-  ];
+  ] as CategoryType[];
 
   return <Directory categories={categories} />;
 };
