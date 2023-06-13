@@ -1,4 +1,4 @@
-import './form-input.styles.scss';
+import { FormInputLabel, Input, Group } from './form-input.styles';
 
 export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   label: string;
@@ -6,18 +6,14 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
 
 const FormInput = ({ label, ...inputProps }: InputProps) => {
   return (
-    <div className="group">
-      <input className="form-input" {...inputProps} />
+    <Group>
+      <Input {...inputProps} />
       {label && (
-        <label
-          className={`${
-            inputProps.value?.toString().length ? 'shrink' : ''
-          } form-input-label`}
-        >
+        <FormInputLabel shrink={inputProps.value?.toString().length}>
           {label}
-        </label>
+        </FormInputLabel>
       )}
-    </div>
+    </Group>
   );
 };
 
