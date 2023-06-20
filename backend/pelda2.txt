@@ -1,0 +1,1 @@
+Példa2 szöveg a pelda.txt fileból!
