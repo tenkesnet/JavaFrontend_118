@@ -25,7 +25,7 @@ console.log("Synchronous read: " + data.toString());
 
 
 console.log("Going to get file info!");
-fs.stat('pelda.txt', function (err, stats) {
+fs.stat('node_modules', function (err, stats) {
  if (err) {
  return console.error(err);
  }
