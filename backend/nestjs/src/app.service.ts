@@ -1,6 +1,5 @@
-import { Injectable, Global } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 
-@Global()
 @Injectable()
 export class AppService {
   getHello(): string {
