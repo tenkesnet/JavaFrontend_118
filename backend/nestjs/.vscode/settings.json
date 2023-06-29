@@ -1,13 +1,8 @@
 {
-  "editor.formatOnSave": true,
-  "prettier.singleQuote": true,
-  "prettier.printWidth": 70,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  }
+    "editor.formatOnSave": true,
+"prettier.singleQuote": true,
+"prettier.printWidth": 70,
+"[javascript]": {
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
 }
