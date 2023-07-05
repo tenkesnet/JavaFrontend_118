@@ -18,3 +18,22 @@ model User {
   lastName  String?
   createdAt DateTime @default(now()) @db.Timestamptz(3)
 }
+
+model Product {
+  id          Int       @id @default(autoincrement())
+  name        String
+  imageUrl    String
+  price       Float
+  createdAt   DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt   DateTime  @updatedAt @db.Timestamptz(3)
+  category    Category  @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  title       String
+  createdAt   DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt   DateTime  @updatedAt @db.Timestamptz(3)
+  products    Product[]
+}
