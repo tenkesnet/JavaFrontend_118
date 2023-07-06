@@ -17,6 +17,11 @@ export class WebshopController {
     return this.webshop.findAllProducts();
   }
 
+  @Get('groups')
+  groups() {
+    return this.webshop.findAllGroups();
+  }
+
   @Get('categories/count')
   categorysCount() {
     return this.webshop.findAllCategorysCount();

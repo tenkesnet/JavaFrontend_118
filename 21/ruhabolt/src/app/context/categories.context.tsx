@@ -2,10 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 
 import SHOP_DATA from '../shop-data';
 import Product from '../model/Product';
-import {
-  addCollectionAndDocuments,
-  getCategoriesAndDocuments,
-} from '../utils/firebase.utils';
+import { getCategoriesAndDocuments } from '../utils/firebase.utils';
 import CategoryEntity from '../model/CategoryEntity';
 
 interface Props {

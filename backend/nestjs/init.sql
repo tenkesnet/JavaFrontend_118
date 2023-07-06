@@ -1,4 +1,7 @@
-insert into "Category" (title,"updatedAt") values ('Hats',now());
+insert into "Group" (id,title,color,"updatedAt" ) values (1,'Női','red',now());
+insert into "Group" (id,title,color,"updatedAt" ) values (2,'Férfi','blue',now());
+
+insert into "Category" (id,title,"groupId","updatedAt") values (3,'Hats',1,now());
 select * from "Category" c ;
 INSERT INTO "Product" (id,name,"imageUrl",price,"categoryId","updatedAt") VALUES
  (1,'Brown Brim','https://i.ibb.co/ZYW3VTp/brown-brim.png',25,3,now())
@@ -13,7 +16,7 @@ INSERT INTO "Product" (id,name,"imageUrl",price,"categoryId","updatedAt") VALUES
 
 select * from "Product" p ;
 
-insert into "Category" (title,"updatedAt") values ('Sneakers',now());
+insert into "Category" (id,title,"groupId","updatedAt") values (4,'Sneakers',1,now());
 select * from "Category" c ;
 INSERT INTO "Product"(id,name,"imageUrl",price,"categoryId","updatedAt") VALUES
  (10,'Adidas NMD','https://i.ibb.co/0s3pdnc/adidas-nmd.png',220,4,now())
@@ -25,7 +28,7 @@ INSERT INTO "Product"(id,name,"imageUrl",price,"categoryId","updatedAt") VALUES
 ,(16,'Air Jordan Limited','https://i.ibb.co/w4k6Ws9/nike-funky.png',190,4,now())
 ,(17,'Timberlands','https://i.ibb.co/Mhh6wBg/timberlands.png',200,4,now());
 
-insert into "Category" (title,"updatedAt") values ('Jackets',now());
+insert into "Category" (id,title,"groupId","updatedAt") values (5,'Jackets',1,now());
 select * from "Category" c ;
 INSERT INTO "Product"(id,name,"imageUrl",price,"categoryId","updatedAt") VALUES
  (18,'Black Jean Shearling','https://i.ibb.co/XzcwL5s/black-shearling.png',125,5,now())
@@ -35,7 +38,7 @@ INSERT INTO "Product"(id,name,"imageUrl",price,"categoryId","updatedAt") VALUES
 ,(22,'Tan Trench','https://i.ibb.co/M6hHc3F/brown-trench.png',185,5,now());
 
 
-insert into "Category" (title,"updatedAt") values ('Womens',now());
+insert into "Category" (id,title,"groupId","updatedAt") values (6,'Womens',1,now());
 select * from "Category" c ;
 
 
@@ -48,7 +51,7 @@ INSERT INTO "Product"(id,name,"imageUrl",price,"categoryId","updatedAt") VALUES
 ,(28,'Yellow Track Suit','https://i.ibb.co/v1cvwNf/yellow-track-suit.png',135,6,now())
 ,(29,'White Blouse','https://i.ibb.co/qBcrsJg/white-vest.png',20,6,now());
 
-insert into "Category" (title,"updatedAt") values ('Mens',now());
+insert into "Category" (id,title,"groupId","updatedAt") values (7,'Mens',2,now());
 select * from "Category" c ;
 INSERT INTO "Product"(id,name,"imageUrl",price,"categoryId","updatedAt") VALUES
  (30,'Camo Down Vest','https://i.ibb.co/xJS0T3Y/camo-vest.png',325,7,now())
@@ -57,3 +60,19 @@ INSERT INTO "Product"(id,name,"imageUrl",price,"categoryId","updatedAt") VALUES
 ,(33,'Pink T-shirt','https://i.ibb.co/RvwnBL8/pink-shirt.png',25,7,now())
 ,(34,'Jean Long Sleeve','https://i.ibb.co/VpW4x5t/roll-up-jean-shirt.png',40,7,now())
 ,(35,'Burgundy T-shirt','https://i.ibb.co/mh3VM1f/polka-dot-shirt.png',25,7,now());
+
+ALTER TABLE "Category" ADD COLUMN  "groupId" INTEGER NOT null default(1);
+
+CREATE TABLE "Group" (
+    "id" SERIAL NOT NULL,
+    "title" TEXT NOT NULL,
+    "createdAt" TIMESTAMPTZ(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMPTZ(3) NOT NULL,
+
+    CONSTRAINT "Group_pkey" PRIMARY KEY ("id")
+);
+
+
+
+ALTER TABLE "Category" ADD CONSTRAINT "Category_groupId_fkey" FOREIGN KEY ("groupId") REFERENCES "Group"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+

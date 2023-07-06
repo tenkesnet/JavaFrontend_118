@@ -35,5 +35,16 @@ model Category {
   title       String
   createdAt   DateTime  @default(now()) @db.Timestamptz(3)
   updatedAt   DateTime  @updatedAt @db.Timestamptz(3)
+  group       Group     @relation(fields: [groupId], references: [id])
+  groupId     Int
   products    Product[]
+}
+
+model Group {
+  id          Int       @id @default(autoincrement())
+  title       String
+  color       String
+  createdAt   DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt   DateTime  @updatedAt @db.Timestamptz(3)
+  categories  Category[]
 }

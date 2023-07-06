@@ -51,4 +51,27 @@ export class WebshopService {
       },
     });
   }
+
+  findAllGroups() {
+    return this.prisma.group.findMany({
+      select: {
+        id: true,
+        title: true,
+        color: true,
+        categories: {
+          select: {
+            title: true,
+            products: {
+              select: {
+                id: true,
+                name: true,
+                price: true,
+                imageUrl: true,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
 }
