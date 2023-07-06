@@ -12,11 +12,13 @@ const Category = () => {
   const { category } = useParams();
   const { categories } = useContext(CategoriesContext);
   const [products, setProducts] = useState<Product[] | undefined>(
-    categories?.filter((cat) => cat.title === category)[0]?.items
+    categories?.filter((cat) => cat.title === category)[0]?.products
   );
 
   useEffect(() => {
-    setProducts(categories?.filter((cat) => cat.title === category)[0]?.items);
+    setProducts(
+      categories?.filter((cat) => cat.title === category)[0]?.products
+    );
   }, [category, categories]);
 
   return (

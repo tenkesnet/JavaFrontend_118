@@ -27,8 +27,12 @@ export const CategoriesProvider = ({ children }: Props) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const categoryMap = await getCategoriesAndDocuments();
-      setCategories(categoryMap);
+      const data = await fetch('http://localhost:3000/shop/categories', {
+        method: 'GET',
+      });
+      const jsonData = (await data.json()) as CategoryEntity[];
+
+      setCategories(jsonData);
     };
     fetchProducts();
   }, []);

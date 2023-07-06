@@ -13,7 +13,7 @@ const CategoriesPreview = () => {
           <CategoryPreview
             key={category.title}
             title={category.title}
-            products={category.items}
+            products={category.products}
           />
         );
       })}
