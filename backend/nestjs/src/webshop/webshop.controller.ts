@@ -5,10 +5,20 @@ import { ConfigService } from '@nestjs/config';
 
 @Controller('/shop')
 export class WebshopController {
-  constructor(private readonly webshopService: WebshopService, private readonly config: ConfigService) {}
+  constructor(private readonly webshop: WebshopService, private readonly config: ConfigService) {}
 
-  @Get()
-  getHello(): string {
-    return `Hello ${this.config.get('WEBSHOP_NAME')}`;
+  @Get('categories')
+  categorys() {
+    return this.webshop.findAllCategorys();
+  }
+
+  @Get('products')
+  products() {
+    return this.webshop.findAllProducts();
+  }
+
+  @Get('categories/count')
+  categorysCount() {
+    return this.webshop.findAllCategorysCount();
   }
 }
