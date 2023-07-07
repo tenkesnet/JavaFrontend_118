@@ -9,7 +9,8 @@ export class WebshopController {
 
   @Get('categories')
   categorys() {
-    return this.webshop.findAllCategorys();
+    //return this.webshop.findAllCategorys();
+    return this.webshop.findAllCategorysWithPage(3, 2);
   }
 
   @Get('products')

@@ -7,9 +7,33 @@ export class WebshopService {
 
   findAllCategorys() {
     return this.prisma.category.findMany({
+      skip: 2,
+      take: 2,
       select: {
         title: true,
         products: {
+          take: 4,
+          select: {
+            id: true,
+            name: true,
+            price: true,
+            imageUrl: true,
+            updatedAt: false,
+            createdAt: false,
+          },
+        },
+      },
+    });
+  }
+
+  findAllCategorysWithPage(page: number, pageSize: number) {
+    return this.prisma.category.findMany({
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+      select: {
+        title: true,
+        products: {
+          take: 4,
           select: {
             id: true,
             name: true,
