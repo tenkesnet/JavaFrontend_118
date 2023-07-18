@@ -7,14 +7,14 @@ chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
 
 browser = webdriver.Chrome(options=chrome_options)
-action = webdriver.ActionChains(browser)
-
 
 browser.get('https://www.seleniumeasy.com/')
 
 
+print(browser.title)
 elem = browser.find_element(By.XPATH, '//*[@id="node-20"]/div/div/div/div[1]/div/div[2]/p[3]/a[1]')  # Find the search box
 elem.click()
-action.pause(10)
+print(browser.title)
 elem = browser.find_element(By.XPATH, '//*[@id="navbar-collapse"]/nav/ul/li[6]/a')
 elem.click()
+print(browser.title)
