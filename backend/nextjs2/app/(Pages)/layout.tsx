@@ -1,7 +1,7 @@
-import "./globals.css";
+import "../globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Search from "./Components/Search";
+import Navbar from "../Components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,8 +18,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className="bg-slate-200">
-                <Search />
-                {children}
+                <div className="container p-6 mx-auto">
+                    <Navbar />
+                    {children}
+                </div>
             </body>
         </html>
     );
