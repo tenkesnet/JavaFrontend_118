@@ -1,0 +1,85 @@
+Milyen kiemelt tulajdonságai vannak egy React alkalmazásnak?
+
+    - JSX : Javascript kiegészítve XML. HTML és javascript kódok egyvelege.
+    - Componensek: újrafelhasználható UI elemek.
+    - Virtual DOM: a böngészőben lévő oldal Memóriában leképzett megfelője.
+    amin a React elsődlegesen a változtatásokat elvégzi és ezt szinkronizálja a "valós" DOM-al
+    - One-way data binding: egyirányú adatkötést tesznek lehetővé
+    - Nagy teljesítményű függvénykönyvtár
+
+Mi a JSX?
+
+    - HTML struktúra ami javascriptet tartalamzhat.
+    <h1>
+        <p>Bekezdés</p>
+    </h1>
+
+A böngésző tudja-e értelmezni a JSX-et?
+
+    - NEM, mert a javascript kód szerves részét képezi, amit böngésző nem tud értelmezni.
+
+Mi a virtual DOM?
+
+    - DOM = Documnt Object Model. Ez a HTML dokumentumot reprezentálja.
+    - Virtual DOM az a "valós" DOM-nak egy könnyű leképezése a valós DOM-nak.
+
+Milyen újítások voltak az ES6-ban?
+
+    - az osztályok (class) bevezetése
+    - import bevezetése var React = require('react');
+                         import React from 'react';
+    - ()=> {}
+
+Hogy hozunk létre egy React Application-t ?
+
+    - create-react-app fel kell installálni és ezt kell futtatni CLI-ból.
+        npx (felinstalálja és futtatja a node.js csomagot). pl: npc create-react-app
+    - nx-workspace használatával,
+    - next.js használatával
+
+Hogy jelöljük az eseményeket React-ben?
+
+    - Hasnlóan az alap HTML eseményeket hasznűljuk, camelCase írásmóddal.
+        onClick(), onPress()
+
+Hogy hozunk létre egy eseménykezelőt React-ben?
+
+    - const handler= () =>
+                {}
+    <button onClick={handler()}>Csináld!</button>
+
+Reactben a listák renderelése?
+
+    const nevek = ["Robi","Feri","Anna"]
+
+    const lista = ()=> {
+        const listaElemek = nevek.map( (nev,_index) => {
+            return (
+                <li key='_index'> {nev}</li>
+            )
+        };
+        return <ul>{listaElemek}</ul>
+    }
+
+Milyen módon használjuk a render() metódust reactben?
+
+    - a render metódus egy JSX ad vissza, aminek csak egy ROOT eleme lehet!
+    pl.:
+        <div> <-----ez az egy root van
+            <h1>Cím</h1>
+            <p>Bekezdés</p>
+        </div>
+
+    
+Mi a props Reactben?
+
+    - Szülés és a gyerek componens ezen keresztűl kommunkálhat.
+
+Mi az a React router?
+
+    - az egy könyvtár ami a SPA (single page applictaion) alkalmazásunkba lehetőséget,
+    add több nézet( Oldal ) közötti navigálásra.
+
+ 
+
+
